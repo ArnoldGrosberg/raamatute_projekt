@@ -13,19 +13,44 @@ class UI {
 		return element;
 }
 
-	addBook(book){
+	addBook(book, author, isbn){
+		console.log(book);
+		console.log(author);
+		console.log(isbn);
 		// create list item
-		const li = this.addUIelement('li', 'collection-item', book.name);
+		 const tr = this.addUIelement('tr', 'item');
+		const bookName = this.addUIelement('th', 'book name',book.name);
+		// create author and ISBN
+		const bookAuthor = this.addUIelement('th', 'book author', author.name);
+		const bookISBN = this.addUIelement('th', 'book ISBN', isbn.name);
 		// create link
 		const link = this.addUIelement('a', 'secondary-content', 'X', {'href':'#'});
-		// add link to list item
-		li.appendChild(link);
+
+		// add book name, author, ISBN and link to list item
+		tr.appendChild(bookName);
+		tr.appendChild(bookAuthor);
+		tr.appendChild(bookISBN);
+		tr.appendChild(link);
 		// find list to add created list item
-		const list = document.querySelector('ul');
-		list.appendChild(li);
+		const list = document.querySelector('table');
+		list.appendChild(tr);
+
+
+
+
+
+
 		// find input to clear this value
 		const input = document.querySelector('#book');
 		input.value = '';
+		const input1 = document.querySelector('#bookAuthor');
+		input1.value = '';
+		const input2 = document.querySelector('#bookISBN');
+		input2.value = '';
+
+
+
+
 		// log to console that book is added to UI
 		book.addedToUI();
 	}
@@ -33,7 +58,7 @@ class UI {
 
 	deleteBook(book){
 
-		const deleteIcon = book.nextSibling;
+		const deleteIcon = book.parentNode.lastChild;
 		if(deleteIcon.textContent == "X"){
 
 			if(confirm('Do you want to delete this book?')) {
@@ -46,24 +71,22 @@ class UI {
 
 
 	deleteBooks(books){
-
-		while(books.firstChild){
-			books.removeChild(books.firstChild);
-		}
-
+		for (var i = books.length - 1; i >= 0; --i) {
+  books[i].remove();
+}
 	}
 
 	getBooks(books){
 		for(let i = 0; i<books.lenght; i++){
 			// create list item
-			const li = this.addUIelement('li', 'collection-item', books[i].name)
+			const th = this.addUIelement('th', 'collection-item', books[i].name)
 			// create link
 			const link = this.addUIelement('a', 'secondary-content', 'X', {'href': '#'})
 			// add link to list item
-			li.appendChild(link);
+			th.appendChild(link);
 			// find list to add created list item
-			const list = document.querySelector('ul');
-			list.appendChild(li);
+			const list = document.querySelector('table');
+			list.appendChild(th);
 		}
 	}
 }

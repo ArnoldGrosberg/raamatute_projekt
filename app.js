@@ -6,8 +6,10 @@ ls = new LS();
 // form submit event
 const form = document.querySelector('form');
 const bookInput = document.querySelector('#book');
+const bookInput1 = document.querySelector('#bookAuthor');
+const bookInput2 = document.querySelector('#bookISBN');
 // bookList X click event
-const bookList = document.querySelector('ul');
+const bookList = document.querySelector('table');
 bookList.addEventListener('click', deleteBook);
 
 // clear button event
@@ -23,9 +25,12 @@ form.addEventListener('submit', addBook);
 
 function addBook(e){
 	// create a new object Book with input value
+	console.log(bookInput.value);
 	const book = new Book(bookInput.value);
+	const bookAuthor = new Book(bookInput1.value);
+	const bookISBN = new Book(bookInput2.value);
 	// add book value to the visual by UI object
-	ui.addBook(book);
+	ui.addBook(book, bookAuthor, bookISBN);
 	// add book value to the LS by LS object
 	ls.addBook(book);
 	e.preventDefault();
@@ -44,7 +49,7 @@ function deleteBook(e){
 
 function deleteBooks(e){
 	// delete all books from UI
-	let books = document.querySelector('ul');
+	let books = document.getElementsByClassName('item');
 	ui.deleteBooks(books);
 	// delete books from LS
 	ls.deleteBooks();

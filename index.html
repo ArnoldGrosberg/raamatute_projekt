@@ -6,6 +6,11 @@
 		<!-- Compiled and minified CSS -->
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 		<title>Books</title>
+		<style>
+			th {
+				font-weight:normal
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container">
@@ -15,27 +20,45 @@
         			<h2>Add Book</h2>
         			<div class="card">
         				<div class="card-content">
-          					<span class="card-title">Book List</span>
+          					<span class="card-title">Book</span>
           					<div class="row">
           						<form id="book-form">
+
           							<div class="input-field col s12">
           								<input id="book" type="text">
-          								<label for="book">New Book</label>
+          								<label for="book">Book Name</label>
         							</div>
-        							<input type="submit" value="Add Task" class="btn">
+
+        							<div class="input-field col s12">
+          								<input id="bookAuthor" type="text">
+          								<label for="bookAuthor">Book Author</label>
+        							</div>
+
+        							<div class="input-field col s12">
+          								<input id="bookISBN" type="number">
+          								<label for="bookISBN">Book ISBN</label>
+        							</div>
+
+
+
+        							<input type="submit" value="submit" class="btn">
           						</form>
           					</div>
         				</div>
+
 	        			<div class="card-action">
-	          				<h4 id="task-title">Books</h4>
-
-<!--- Zombie code for filtering books, not needed for now.
-	          				<div class="input-field col s12">
-	          					<input id="filter" type="text">
-	          					<label for="filter">Find Book</label>
-	          				</div>
---->
-
+	        				<table class='border' id="book-titles">
+	        					<tr class='border'>
+	        						<th><b>Title</b></th>
+	        						<th><b>Author</b></th>
+	        						<th><b>ISBN</b></th>
+	        					</tr>
+	        					<tr class='item'>
+	        						<th >maeitea</th>
+	        						<th >Mati Karilaid</th>
+	        						<th >12031230</th>
+	        					</tr>
+	        				</table>
 	          				<ul class="collection">
 					     		
 						    </ul>
