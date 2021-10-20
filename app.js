@@ -27,7 +27,7 @@ function addBook(e){
 	// add book value to the visual by UI object
 	ui.addBook(book);
 	// add book value to the LS by LS object
-	ls.addTask(book);
+	ls.addBook(book);
 	e.preventDefault();
 }
 
@@ -35,7 +35,7 @@ function deleteBook(e){
 	// get book name
 	let book = e.target.parentElement.firstChild;
 	// delete book value from visual by UI object
-	ui.deleteBook(task);
+	ui.deleteBook(book);
 	// change book element content before deleting from LS
 	book = book.textContent;
 	// delete book value from LS by LS object
