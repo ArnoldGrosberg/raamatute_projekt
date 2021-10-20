@@ -25,7 +25,6 @@ form.addEventListener('submit', addBook);
 
 function addBook(e){
 	// create a new object Book with input value
-	console.log(bookInput.value);
 	const book = new Book(bookInput.value);
 	const bookAuthor = new Book(bookInput1.value);
 	const bookISBN = new Book(bookInput2.value);

@@ -14,9 +14,6 @@ class UI {
 }
 
 	addBook(book, author, isbn){
-		console.log(book);
-		console.log(author);
-		console.log(isbn);
 		// create list item
 		 const tr = this.addUIelement('tr', 'item');
 		const bookName = this.addUIelement('th', 'book name',book.name);
