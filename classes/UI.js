@@ -13,13 +13,13 @@ class UI {
 		return element;
 }
 
-	addBook(book, author, isbn){
+	addBook(book){
 		// create list item
-		 const tr = this.addUIelement('tr', 'item');
-		const bookName = this.addUIelement('th', 'book name',book.name);
+		const tr = this.addUIelement('tr', 'item');
+		const bookName = this.addUIelement('th', 'book name',book.title);
 		// create author and ISBN
-		const bookAuthor = this.addUIelement('th', 'book author', author.name);
-		const bookISBN = this.addUIelement('th', 'book ISBN', isbn.name);
+		const bookAuthor = this.addUIelement('th', 'book author', book.autor);
+		const bookISBN = this.addUIelement('th', 'book ISBN', book.isbn);
 		// create link
 		const link = this.addUIelement('a', 'secondary-content', 'X', {'href':'#'});
 
@@ -69,21 +69,27 @@ class UI {
 
 	deleteBooks(books){
 		for (var i = books.length - 1; i >= 0; --i) {
-  books[i].remove();
-}
+			books[i].remove();
+		}
 	}
 
 	getBooks(books){
-		for(let i = 0; i<books.lenght; i++){
-			// create list item
-			const th = this.addUIelement('th', 'collection-item', books[i].name)
-			// create link
-			const link = this.addUIelement('a', 'secondary-content', 'X', {'href': '#'})
-			// add link to list item
-			th.appendChild(link);
-			// find list to add created list item
-			const list = document.querySelector('table');
-			list.appendChild(th);
-		}
+		// create list item
+		const tr = ui.addUIelement('tr', 'item');
+		const bookName = ui.addUIelement('th', 'book name',books.title);
+		// create author and ISBN
+		const bookAuthor = ui.addUIelement('th', 'book author', books.autor);
+		const bookISBN = ui.addUIelement('th', 'book ISBN', books.isbn);
+		// create link
+		const link = ui.addUIelement('a', 'secondary-content', 'X', {'href':'#'});
+
+		// add book name, author, ISBN and link to list item
+		tr.appendChild(bookName);
+		tr.appendChild(bookAuthor);
+		tr.appendChild(bookISBN);
+		tr.appendChild(link);
+		// find list to add created list item
+		const list = document.querySelector('table');
+		list.appendChild(tr);
 	}
 }

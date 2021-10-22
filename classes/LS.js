@@ -23,12 +23,13 @@ class LS {
 		// log to console that book is added to LS
 		book.addedToLS();
 	}
+	
 
 	// delete book from LS
 	deleteBook(book){
 		let books = this.getData('books');
 		books.forEach(function(booksElement, booksIndex){
-			if(booksElement.name === book){
+			if(booksElement.isbn == book){
 				books.splice(booksIndex, 1);
 			}
 		});

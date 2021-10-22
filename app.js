@@ -20,29 +20,28 @@ clearBtn.addEventListener('click', deleteBooks);
 document.addEventListener('DOMContentLoaded', getBooks);
 
 // events
-// form submit event
+// form submit event name
 form.addEventListener('submit', addBook);
 
 function addBook(e){
-	// create a new object Book with input value
-	const book = new Book(bookInput.value);
-	const bookAuthor = new Book(bookInput1.value);
-	const bookISBN = new Book(bookInput2.value);
+	// create a new object Book with the input values
+	const book = new Book(bookInput.value, bookInput1.value, bookInput2.value);
+
 	// add book value to the visual by UI object
-	ui.addBook(book, bookAuthor, bookISBN);
+	ui.addBook(book);
 	// add book value to the LS by LS object
 	ls.addBook(book);
 	e.preventDefault();
 }
 
 function deleteBook(e){
+
 	// get book name
 	let book = e.target.parentElement.firstChild;
 	// delete book value from visual by UI object
 	ui.deleteBook(book);
-	// change book element content before deleting from LS
-	book = book.textContent;
 	// delete book value from LS by LS object
+	book = book.nextElementSibling.nextElementSibling.nextElementSibling.textContent;
 	ls.deleteBook(book);
 }
 
@@ -58,5 +57,5 @@ function getBooks(e){
 	// get books from LS by this localStorage name
 	books = ls.getData('books');
 	// create book list by UI
-	ui.getBooks(books);
+	books.forEach(ui.getBooks.bind(books));
 }
